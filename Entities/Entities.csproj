@@ -41,12 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IEntity.cs" />
     <Compile Include="Concrete\Brand.cs" />
     <Compile Include="Concrete\Car.cs" />
     <Compile Include="Concrete\Color.cs" />
+    <Compile Include="DTOs\CarDetailDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{e93b5331-9916-44d9-95a8-ae7b8a5ea316}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

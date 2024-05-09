@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32F61F0E-90A0-4369-BA62-0B1496A78363}</ProjectGuid>
+    <ProjectGuid>{E93B5331-9916-44D9-95A8-AE7B8A5EA316}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DataAccess</RootNamespace>
-    <AssemblyName>DataAccess</AssemblyName>
+    <RootNamespace>Core</RootNamespace>
+    <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -51,29 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\IBrandDal.cs" />
-    <Compile Include="Abstract\ICarDal.cs" />
-    <Compile Include="Abstract\IColorDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfBrandDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfCarDal.cs" />
-    <Compile Include="Concrete\EntityFramework\EfColorDal.cs" />
-    <Compile Include="Concrete\EntityFramework\RentACarContext.cs" />
-    <Compile Include="Concrete\InMemory\InMemoryCarDal.cs" />
+    <Compile Include="DataAccess\EnityFramework\EfEntityRepositoryBase.cs" />
+    <Compile Include="DataAccess\IEntityRepository.cs" />
+    <Compile Include="Entities\IDto.cs" />
+    <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{E93B5331-9916-44D9-95A8-AE7B8A5EA316}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{A02A0370-4C4E-41F2-9999-94A491E46810}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

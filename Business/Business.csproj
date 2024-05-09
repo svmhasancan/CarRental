@@ -51,6 +51,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{E93B5331-9916-44D9-95A8-AE7B8A5EA316}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{32F61F0E-90A0-4369-BA62-0B1496A78363}</Project>
       <Name>DataAccess</Name>

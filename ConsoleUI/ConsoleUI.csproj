@@ -65,6 +65,10 @@
       <Project>{85f7e100-0d12-4c53-bfca-33329dc81f4a}</Project>
       <Name>Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{E93B5331-9916-44D9-95A8-AE7B8A5EA316}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{32f61f0e-90a0-4369-ba62-0b1496a78363}</Project>
       <Name>DataAccess</Name>
