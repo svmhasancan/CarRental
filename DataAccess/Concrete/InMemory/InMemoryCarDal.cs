@@ -18,10 +18,10 @@ namespace DataAccess.Concrete.InMemory
         {
             _cars = new List<Car>
             {
-                new Car{CarId=1,BrandId=1,ColorId=1,ModelYear=2018,DailyPrice=500,Description="BMW"},
-                new Car{CarId=2,BrandId=1,ColorId=2,ModelYear=2010,DailyPrice=300,Description="BMW"},
-                new Car{CarId=3,BrandId=3,ColorId=2,ModelYear=2017,DailyPrice=800,Description="Audi"},
-                new Car{CarId=4,BrandId=5,ColorId=4,ModelYear=2020,DailyPrice=1000,Description="Nissan"}
+                new Car{Id=1,BrandId=1,ColorId=1,ModelYear=2018,DailyPrice=500,Description="BMW"},
+                new Car{Id=2,BrandId=1,ColorId=2,ModelYear=2010,DailyPrice=300,Description="BMW"},
+                new Car{Id=3,BrandId=3,ColorId=2,ModelYear=2017,DailyPrice=800,Description="Audi"},
+                new Car{Id=4,BrandId=5,ColorId=4,ModelYear=2020,DailyPrice=1000,Description="Nissan"}
             };
         }
 
@@ -32,7 +32,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Delete(Car car)
         {
-            Car carToDelete = _cars.SingleOrDefault(p=>p.CarId == car.CarId);
+            Car carToDelete = _cars.SingleOrDefault(p=>p.Id == car.Id);
             _cars.Remove(carToDelete);
         }
 
@@ -53,7 +53,7 @@ namespace DataAccess.Concrete.InMemory
 
         public Car GetById(int id)
         {
-            Car findByIdToCar = _cars.SingleOrDefault(p => p.CarId == id);
+            Car findByIdToCar = _cars.SingleOrDefault(p => p.Id == id);
             return findByIdToCar;
         }
 
@@ -64,7 +64,7 @@ namespace DataAccess.Concrete.InMemory
 
         public void Update(Car car)
         {
-            Car carToUpdate = _cars.SingleOrDefault(p=>p.CarId == car.CarId);
+            Car carToUpdate = _cars.SingleOrDefault(p=>p.Id == car.Id);
             carToUpdate.BrandId = car.BrandId;
             carToUpdate.ColorId = car.ColorId;
             carToUpdate.ModelYear = car.ModelYear;
