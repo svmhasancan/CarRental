@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             _colorService = colorService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _colorService.GetAll();
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("getbyid")]
         public IActionResult GetById(int id)
         {
             var result = _colorService.GetColorById(id);
@@ -44,7 +44,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public IActionResult Add(Color color)
         {
             var result = _colorService.Add(color);
@@ -57,7 +57,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Update")]
+        [HttpPost("update")]
         public IActionResult Update(Color color)
         {
             var result = _colorService.Update(color);
@@ -70,7 +70,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Color color)
         {
             var result = _colorService.Delete(color);

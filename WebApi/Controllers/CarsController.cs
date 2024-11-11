@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             _carService = carService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
@@ -31,7 +31,7 @@ namespace WebApi.Controllers
             return BadRequest();
         }
 
-        [HttpGet("GetCarsByBrandId")]
+        [HttpGet("getcarsbybrandid")]
         public IActionResult GetCarsByBrandId(int id)
         {
             var result = _carService.GetCarsByBrandId(id);
@@ -43,7 +43,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetCarsByColorId")]
+        [HttpGet("getcarsbycolorid")]
         public IActionResult GetCarsByColorId(int id)
         {
             var result = _carService.GetCarsByColorId(id);
@@ -55,7 +55,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetCarById")]
+        [HttpGet("getcarbyid")]
         public IActionResult GetCarById(int id)
         {
             var result = _carService.GetCarById(id);
@@ -67,7 +67,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetCarByDetails")]
+        [HttpGet("getcarbydetails")]
         public IActionResult GetCarByDetails()
         {
             var result = _carService.GetCarDetails();
@@ -80,7 +80,7 @@ namespace WebApi.Controllers
             return BadRequest();
         }
 
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public IActionResult Add(Car car)
         {
             var result = _carService.Add(car);
@@ -92,7 +92,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Update")]
+        [HttpPost("update")]
         public IActionResult Update(Car car)
         {
             var result = _carService.Update(car);
@@ -104,7 +104,7 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("Delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Car car)
         {
             var result = _carService.Delete(car);
