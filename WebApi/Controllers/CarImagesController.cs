@@ -15,23 +15,33 @@ namespace WebApi.Controllers
             _carImageService = carImageService;
         }
 
-        [HttpPost("add")]
-        public IActionResult Add([FromForm]IFormFile file, [FromForm]CarImage carImage)
+        [HttpGet("getall")]
+        public IActionResult GetAll()
         {
-            var result = _carImageService.Add(file, carImage);
-
+            var result = _carImageService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return BadRequest();
         }
 
+        [HttpPost("add")]
+        public IActionResult Add([FromForm]IFormFile file,[FromForm]CarImage carImage)
+        {
+            var result = _carImageService.Add(file, carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        // Hata Var Çözemedim!
         [HttpPost("update")]
-        public IActionResult Update([FromForm] IFormFile file, [FromForm]CarImage carImage)
+        public IActionResult Update([FromForm] IFormFile file, [FromForm] CarImage carImage)
         {
             var result = _carImageService.Update(file, carImage);
-
             if (result.Success)
             {
                 return Ok(result);
@@ -47,41 +57,29 @@ namespace WebApi.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result);
-        }
-
-        [HttpGet("getall")]
-        public IActionResult GetAll()
-        {
-            var result = _carImageService.GetAll();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
+            return BadRequest();
         }
 
         [HttpGet("getbycarid")]
         public IActionResult GetByCarId(int carId)
         {
-            var result = _carImageService.GetByCarId(carId);
+            var result = _carImageService.GetImagesByCarId(carId);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return BadRequest();
         }
 
-
         [HttpGet("getbyimageid")]
-        public IActionResult GetByImageId(int imageId)
+        public IActionResult GetByImageId(int id)
         {
-            var result = _carImageService.GetByImageId(imageId);
+            var result = _carImageService.GetImageById(id);
             if (result.Success)
             {
                 return Ok(result);
             }
-            return BadRequest(result);
+            return BadRequest();
         }
     }
 }

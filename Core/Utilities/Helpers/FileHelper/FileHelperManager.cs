@@ -12,8 +12,7 @@ namespace Core.Utilities.Helpers.FileHelper
     {
         public void Delete(string filePath)
         {
-            // Böyle bir dosya varsa sil
-            if(File.Exists(filePath))
+            if (File.Exists(filePath))
             {
                 File.Delete(filePath);
             }
@@ -21,8 +20,6 @@ namespace Core.Utilities.Helpers.FileHelper
 
         public string Update(IFormFile file, string filePath, string root)
         {
-            // Böyle bi dosya var mı
-            // varsa sil upload çalıştır
             if (File.Exists(filePath))
             {
                 File.Delete(filePath);
@@ -32,21 +29,17 @@ namespace Core.Utilities.Helpers.FileHelper
 
         public string Upload(IFormFile file, string root)
         {
-            // Dosya var mı yok mu
-            // Klasör varr mı
-            // guid ile uzantıyı birleştirdik
-            // filePath yolunda bi dosya oluşturup file'ı ona aktardık
             if (file.Length > 0)
             {
                 if (!Directory.Exists(root))
                 {
                     Directory.CreateDirectory(root);
                 }
-                string extension = Path.GetExtension(file.FileName);
                 string guid = GuidHelper.CreateGuid();
-                string filePath = guid + extension;
+                string extension = Path.GetExtension(file.FileName);
+                string filePath = guid+ extension;
 
-                using (FileStream fileStream = File.Create(root + filePath))
+                using(FileStream fileStream = File.Create(root + filePath))
                 {
                     file.CopyTo(fileStream);
                     fileStream.Flush();
