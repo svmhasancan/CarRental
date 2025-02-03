@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.IoC;
 using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
@@ -12,10 +13,12 @@ namespace WebApi.Controllers
     public class CarsController : ControllerBase
     {
         private ICarService _carService;
+        private IHttpContextAccessor _httpcontextAccessor;
 
         public CarsController(ICarService carService)
         {
             _carService = carService;
+            _httpcontextAccessor = ServiceTool.ServiceProvider.GetService<IHttpContextAccessor>();
         }
 
         [HttpGet("getall")]

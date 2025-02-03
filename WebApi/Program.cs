@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Extensions;
 using Core.DependencyResolvers;
+using System.Diagnostics;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -32,6 +33,9 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddSingleton<IColorService, ColorManager>();
 //builder.Services.AddSingleton<IColorDal, EfColorDal>();
 
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
 builder.Host.ConfigureContainer<ContainerBuilder>(options =>
@@ -43,6 +47,22 @@ builder.Host.ConfigureContainer<ContainerBuilder>(options =>
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
 // Authentication ve JWT Bearer ayarlarýný ekliyoruz
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+//    .AddJwtBearer(options =>
+//    {
+//        options.TokenValidationParameters = new TokenValidationParameters
+//        {
+//            ValidateIssuer = true,
+//            ValidateAudience = true,
+//            ValidateLifetime = true,
+//            ValidIssuer = tokenOptions.Issuer,
+//            ValidAudience = tokenOptions.Audience,
+//            ValidateIssuerSigningKey = true,
+//            IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
+//        };
+//    });
+
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -56,8 +76,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
         };
-    });
 
+        options.Events = new JwtBearerEvents
+        {
+            OnAuthenticationFailed = context =>
+            {
+                Console.WriteLine($"JWT Authentication Failed: {context.Exception.Message}");
+                Debug.WriteLine(context.Exception.Message.ToString());
+                return Task.CompletedTask;
+            }
+        };
+    });
 
 builder.Services.AddDependencyResolvers(new ICoreModule[]
 {
