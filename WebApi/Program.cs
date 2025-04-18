@@ -62,6 +62,7 @@ var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOpt
 //        };
 //    });
 
+builder.Services.AddCors();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -103,6 +104,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(builder => 
+    builder.WithOrigins("http://localhost:4200/")
+    .AllowAnyHeader()
+    .AllowAnyMethod()
+    .AllowAnyOrigin()
+);
 
 app.UseHttpsRedirection();
 

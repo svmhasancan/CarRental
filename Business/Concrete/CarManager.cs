@@ -47,10 +47,15 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p=>p.Id == carId));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetails()
+        public IDataResult<List<CarDetailDto2>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            return new SuccessDataResult<List<CarDetailDto2>>(_carDal.GetCarDetails());
         }
+
+        //public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandName(string brandName)
+        //{
+        //    return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByBrandName(brandName));
+        //}
 
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
