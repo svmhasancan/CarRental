@@ -46,6 +46,17 @@ namespace WebApi.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getcardetailsbybrandname")]
+        public IActionResult GetCarDetailsByBrandName(string brandName)
+        {
+            var result = _carService.GetCarDetailsByBrandName(brandName);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpGet("getcarsbycolorid")]
         public IActionResult GetCarsByColorId(int id)
         {
@@ -53,7 +64,7 @@ namespace WebApi.Controllers
 
             if (result.Success)
             {
-                Ok(result);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -65,7 +76,7 @@ namespace WebApi.Controllers
 
             if (result.Success)
             {
-                Ok(result);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -83,18 +94,6 @@ namespace WebApi.Controllers
             return BadRequest();
         }
 
-        //[HttpGet("getcardetailsbybrandname")]
-        //public IActionResult GetCarDetailsByBrandName(string brandName)
-        //{
-        //    var result = _carService.GetCarDetailsByBrandName(brandName);
-
-        //    if (result.Success)
-        //    {
-        //        return Ok(result);
-        //    }
-
-        //    return BadRequest();
-        //}
 
         [HttpPost("add")]
         public IActionResult Add(Car car)
@@ -103,7 +102,7 @@ namespace WebApi.Controllers
 
             if (result.Success)
             {
-                Ok(result);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -115,7 +114,7 @@ namespace WebApi.Controllers
 
             if (result.Success)
             {
-                Ok(result);
+                return Ok(result);
             }
             return BadRequest(result);
         }
@@ -127,7 +126,7 @@ namespace WebApi.Controllers
 
             if (result.Success)
             {
-                Ok(result);
+                return Ok(result);
             }
             return BadRequest(result);
         }

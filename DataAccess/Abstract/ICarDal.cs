@@ -12,6 +12,6 @@ namespace DataAccess.Abstract
     public interface ICarDal:IEntityRepository<Car>
     {
         List<CarDetailDto2> GetCarDetails();
-        string GetCarDetailsByBrandName(string brandName);
+        List<CarDetailDto2> GetCarDetailsByBrandName(string brandName);
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Business.BusinessAspects.Autofac;
+using Business.Constanse;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
@@ -47,26 +48,27 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(_carDal.Get(p=>p.Id == carId));
         }
 
+        public IDataResult<List<CarDetailDto2>> GetCarDetailsByBrandName(string brandName)
+        {
+            return new SuccessDataResult<List<CarDetailDto2>>(_carDal.GetCarDetailsByBrandName(brandName));
+        }
+
         public IDataResult<List<CarDetailDto2>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto2>>(_carDal.GetCarDetails());
         }
 
-        //public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandName(string brandName)
-        //{
-        //    return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByBrandName(brandName));
-        //}
-
-        [SecuredOperation("car.add,admin")]
+        //[SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("ICarService.Add")]
         public IResult Add(Car car)
         {
 
             _carDal.Add(car);
-            return new SuccessResult();
+            return new SuccessResult(Messages.CarAdded);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Update(Car car)
         {
             _carDal.Update(car);

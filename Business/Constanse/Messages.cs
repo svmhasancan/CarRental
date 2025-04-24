@@ -17,5 +17,6 @@ namespace Business.Constanse
         public static string SuccessfulLogin = "Giriş Başarılı!"; 
         public static string UserAlreadyExists = "Kullanıcı Zaten Mevcut!";
         public static string AccessTokenCreated = "Access Token Oluşturuldu!";
+        public static string CarAdded = "Araç Eklendi";
     }
 }

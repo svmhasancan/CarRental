@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilities.Extensions
+namespace Core.Extensions
 {
     public static class ServiceCollectionExtensions
     {
